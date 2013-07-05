@@ -1,0 +1,69 @@
+@media only screen and (max-device-width: 480px), only screen and (min-device-width: 560px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2) {
+
+#parkings, #map, section, header, #body {
+    margin:0px;
+    padding: 0px;
+}
+
+    section, #parkings, #map {
+        float: none;
+        display: block;
+        width: 100%;
+
+    }
+
+    header, #map, #parkings {
+        width: 95%;
+    }
+
+    #body {
+        width: 100%;
+    }
+
+    header, #map, #parkings {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    header {
+        padding: 10px;
+        margin-top: 15px;
+
+    }
+
+    #map {
+        margin-top: 15px;
+        padding: 10px;
+    }
+
+    #parkings {
+        padding: 10px;
+        margin-top: 15px;
+    }
+
+    li img {
+        width: 50px;
+        height: 50px;
+    }
+
+    li {
+        height: 65px;
+    }
+
+    p {
+        font-size: 20px;
+        height: 65px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    label {
+        font-size: 20px;
+    }
+
+
+}
+
+

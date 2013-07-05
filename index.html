@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parko spots</title>
+    <link href="assets/basic.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/parko.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/parko_mobile.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuXSQKxz2vn5a31u2aSGbU2qbToKcZJ7A&sensor=true">
+    </script>
+
+</head>
+<body>
+<script type="text/x-handlebars" data-template-name="parko">
+    <header>
+        <img src="assets/parko.png"/>
+        <h1>Where can I Parko?</h1>
+    </header>
+    <div id="body">
+        <section id="parkings">
+            {{outlet}}
+
+            {{view Ember.Checkbox id="availableOnlyChk" checkedBinding="getSetOpenOnly"}}<label for="availableOnlyChk">Show open spots only</label>
+        </section>
+        <section id="map">
+            {{getCurrentPosition}}
+            {{view Parko.MapView parkingBinding="selectedItem" locationBinding="getCurrentPosition"}}
+        </section>
+    </div>
+</script>
+
+
+<script type="text/x-handlebars" data-template-name="parko/index">
+<ul>
+    {{#each controller itemController="item"}}
+    <li {{action "selectParking" on="click" }} {{bindAttr class="isSelected:selected"}} >
+    {{#if isAvailable}}
+    <img src="assets/icon_yes.jpg">
+    {{else}}
+    <img src="assets/icon_no.jpg">
+    {{/if}}
+    <p>{{title}}
+        {{#if isAvailable}}
+        ({{availableSpots}} open {{inflection}})
+        {{/if}}
+    </p>
+    </li>
+    {{/each}}
+
+</ul>
+</script>
+
+
+
+<script src="http://emberjs.com.s3.amazonaws.com/getting-started/jquery.min.js"></script>
+<script src="http://emberjs.com.s3.amazonaws.com/getting-started/handlebars.js"></script>
+<script src="http://emberjs.com.s3.amazonaws.com/getting-started/ember.js"></script>
+<script src="http://emberjs.com.s3.amazonaws.com/getting-started/ember-data.js"></script>
+
+<script src="js/application.js"></script>
+<script src="js/router.js"></script>
+
+<script src="js/models/store.js"></script>
+<script src="js/models/parking.js"></script>
+
+<script src="js/controllers/parko_controller.js"></script>
+<script src="js/controllers/item_controller.js"></script>
+
+<script src="js/views/map_view.js"></script>
+
+</body>
+</html>
